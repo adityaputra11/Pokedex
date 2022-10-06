@@ -63,7 +63,8 @@ fun Menus(navController: NavController, searchText: TextFieldValue) {
                         text = filteredMenu[index].label,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(Dimens.PaddingLarge),
-                        color = Color.White
+                        color = Color.White,
+                        fontFamily = Dimens.fontFamily
                     )
                 }
 

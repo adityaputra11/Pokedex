@@ -9,12 +9,16 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import dagger.hilt.android.AndroidEntryPoint
+import id.aditya.pokedex.R
 import id.aditya.pokedex.presentation.home.HomeScreen
 import id.aditya.pokedex.presentation.pokemon_detail.PokemonDetailScreen
 import id.aditya.pokedex.presentation.pokemon_list.PokemonListScreen
@@ -27,6 +31,7 @@ private val uri = "https://www.pokedexdit.com"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         setContent {
             PokedexTheme {

@@ -2,6 +2,9 @@ package id.aditya.pokedex.compose
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,4 +32,10 @@ object Dimens {
     val TextMedium = 20.sp
 
     val TextLarge = 25.sp
+
+    val fontFamily = FontFamily(
+        Font(R.font.lato_black, FontWeight.Black),
+        Font(R.font.lato_light, FontWeight.Light),
+        Font(R.font.lato_regular, FontWeight.Medium)
+    )
 }
