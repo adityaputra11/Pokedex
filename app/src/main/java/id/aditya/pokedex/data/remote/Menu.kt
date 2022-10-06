@@ -4,5 +4,6 @@ import androidx.compose.ui.graphics.Color
 
 data class Menu(
     val label:String,
-    val color: Color,
+    val color: Color?=null,
+    val navigate:String?=null
 )

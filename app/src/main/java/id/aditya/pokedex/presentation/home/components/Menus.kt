@@ -21,24 +21,25 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import id.aditya.pokedex.compose.Dimens
+import id.aditya.pokedex.data.remote.Menu
 import id.aditya.pokedex.presentation.Screen
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Menus(navController: NavController, searchText: TextFieldValue) {
     val menuList = getMenuList()
-    var filteredMenu: ArrayList<String>
+    var filteredMenu: ArrayList<Menu>
     val context = LocalContext.current
     val colorGray = Color.DarkGray
-    val colorWhite = Color.White
-    val gradientGrayWhite = Brush.verticalGradient(0f to colorGray, 1000f to colorWhite)
+//    val colorWhite = Color.White
+//    val gradientGrayWhite = Brush.verticalGradient(0f to colorGray, 1000f to colorWhite)
     LazyVerticalGrid(columns = GridCells.Fixed(2), userScrollEnabled = false) {
         filteredMenu = if (searchText.text.isEmpty()) {
             menuList
         } else {
-            val resultList = ArrayList<String>()
+            val resultList = ArrayList<Menu>()
             for (menu in menuList) {
-                if (menu.lowercase()
+                if (menu.label.lowercase()
                         .contains(searchText.text.lowercase())
                 ) {
                     resultList.add(menu)
@@ -53,13 +54,13 @@ fun Menus(navController: NavController, searchText: TextFieldValue) {
                     .padding(Dimens.PaddingSmall)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(Dimens.PaddingNormal),
-                onClick = { onClickMenu(context, filteredMenu[index], navController) }
+                onClick = { onClickMenu(context, filteredMenu[index].label, navController) }
             ) {
                 Box(
                     modifier = Modifier.background(colorGray)
                 ) {
                     Text(
-                        text = filteredMenu[index],
+                        text = filteredMenu[index].label,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(Dimens.PaddingLarge),
                         color = Color.White
@@ -74,8 +75,15 @@ fun Menus(navController: NavController, searchText: TextFieldValue) {
     }
 }
 
-private fun getMenuList(): ArrayList<String> {
-    return arrayListOf("Pokedex", "Moves", "Abilities", "Items", "Locations", "Type Charts")
+private fun getMenuList(): ArrayList<Menu> {
+    val menus= arrayListOf<Menu>()
+    menus.add(Menu("Pokedex"))
+    menus.add(Menu("Moves"))
+    menus.add(Menu("Abilities"))
+    menus.add(Menu("Items"))
+    menus.add(Menu("Locations"))
+    menus.add(Menu("Type Charts"))
+    return menus
 }
 
 private fun onClickMenu(context: Context, menu: String, navController: NavController) {
