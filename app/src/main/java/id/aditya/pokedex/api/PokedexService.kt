@@ -1,6 +1,6 @@
 package id.aditya.pokedex.api
 
-import id.aditya.pokedex.data.remote.PokemonListDto
+import id.aditya.pokedex.domain.model.remote.PokemonListDto
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,6 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PokedexService {
+
     @GET("pokemon/")
     suspend fun getPokemonList(
         @Query("offset") offset: Number,

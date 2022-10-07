@@ -1,4 +1,4 @@
-package id.aditya.pokedex.data.remote
+package id.aditya.pokedex.domain.model.remote
 
 data class PokemonListDto(
     val count: Int,

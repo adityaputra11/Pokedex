@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.aditya.pokedex.api.PokedexService
-import id.aditya.pokedex.data.repository.PokemonListRepository
+import id.aditya.pokedex.domain.repository.PokemonListRepository
 import id.aditya.pokedex.data.repository.PokemonListRepositoryImpl
 import javax.inject.Singleton
 

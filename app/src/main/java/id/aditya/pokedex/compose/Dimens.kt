@@ -33,7 +33,7 @@ object Dimens {
 
     val TextLarge = 25.sp
 
-    val fontFamily = FontFamily(
+    val FontFamily = FontFamily(
         Font(R.font.lato_black, FontWeight.Black),
         Font(R.font.lato_light, FontWeight.Light),
         Font(R.font.lato_regular, FontWeight.Medium)

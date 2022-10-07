@@ -25,14 +25,17 @@ import id.aditya.pokedex.viewmodels.PokemonListViewModel
 
 @Composable
 fun PokemonListScreen(
-    navController: NavController,
+//    navController: NavController,
     viewModel: PokemonListViewModel = hiltViewModel()
 ) {
     val state by viewModel.pokemonListData.observeAsState()
     val result = state?.results
     Column() {
-        Text(text = "PokemonListScreen")
+
         LazyColumn {
+            item{
+                Text(text = "PokemonListScreen")
+            }
             if (result?.isNotEmpty() == true) {
                 items(result.size) { index ->
                     Card(

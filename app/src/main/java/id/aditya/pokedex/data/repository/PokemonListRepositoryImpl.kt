@@ -1,12 +1,8 @@
 package id.aditya.pokedex.data.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import id.aditya.pokedex.api.PokedexService
-import id.aditya.pokedex.data.paging.PokemonPagingSource
-import id.aditya.pokedex.data.remote.PokemonListDto
-import kotlinx.coroutines.flow.Flow
+import id.aditya.pokedex.domain.model.remote.PokemonListDto
+import id.aditya.pokedex.domain.repository.PokemonListRepository
 import javax.inject.Inject
 
 class PokemonListRepositoryImpl @Inject constructor(
@@ -14,9 +10,10 @@ class PokemonListRepositoryImpl @Inject constructor(
 ) : PokemonListRepository {
 
     override suspend fun getPokemonList(): PokemonListDto {
-       return pokemonService.getPokemonList(0,20)
+       return pokemonService.getPokemonList(OFFSET, LIMIT)
     }
     companion object {
-        private const val NETWORK_PAGE_SIZE = 25
+        private const val LIMIT = 20
+        private const val OFFSET = 0
     }
 }

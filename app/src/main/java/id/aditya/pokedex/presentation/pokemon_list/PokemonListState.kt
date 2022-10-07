@@ -1,6 +1,6 @@
 package id.aditya.pokedex.presentation.pokemon_list
 
-import id.aditya.pokedex.data.remote.PokemonListDto
+import id.aditya.pokedex.domain.model.remote.PokemonListDto
 
 data class PokemonListState(
     val isLoading:Boolean = false,

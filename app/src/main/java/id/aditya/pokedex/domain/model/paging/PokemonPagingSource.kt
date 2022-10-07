@@ -1,9 +1,9 @@
-package id.aditya.pokedex.data.paging
+package id.aditya.pokedex.domain.model.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import id.aditya.pokedex.api.PokedexService
-import id.aditya.pokedex.data.remote.Result
+import id.aditya.pokedex.domain.model.remote.Result
 
 private const val POKEMON_OFFSET = 20
 class PokemonPagingSource(private val pokedexService: PokedexService): PagingSource<Int, Result>() {
