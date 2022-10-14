@@ -10,10 +10,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -21,6 +25,7 @@ import com.bumptech.glide.Glide
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 import id.aditya.pokedex.compose.Dimens
+import id.aditya.pokedex.presentation.pokemon_list.components.Header
 import id.aditya.pokedex.viewmodels.PokemonListViewModel
 
 @Composable
@@ -30,10 +35,15 @@ fun PokemonListScreen(
 ) {
     val state by viewModel.pokemonListData.observeAsState()
     val result = state?.results
-    Column() {
-
+    var searchText by rememberSaveable(stateSaver = TextFieldValue.Saver) {
+        mutableStateOf(
+            TextFieldValue()
+        )
+    }
+    Column(modifier = Modifier.padding(Dimens.PaddingSmall)) {
+        Header(searchText, onSearchMenu = { searchText = it })
         LazyColumn {
-            item{
+            item {
                 Text(text = "PokemonListScreen")
             }
             if (result?.isNotEmpty() == true) {
@@ -55,8 +65,10 @@ fun PokemonListScreen(
                                 verticalAlignment = Alignment.CenterVertically,
                             ) {
                                 GlideImage(
-                                    modifier = Modifier.width(100.dp).height(100.dp),
-                                    imageModel = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png",
+                                    modifier = Modifier
+                                        .width(100.dp)
+                                        .height(100.dp),
+                                    imageModel = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png",
                                     imageOptions = ImageOptions(
                                         contentScale = ContentScale.Crop,
                                     ),

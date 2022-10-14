@@ -100,5 +100,9 @@ dependencies {
     //Lanscapist for image procession
     implementation "com.github.skydoves:landscapist-glide:2.0.0"
 
+    //SplashScreen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+
 
 }
