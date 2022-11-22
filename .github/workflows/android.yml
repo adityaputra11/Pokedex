@@ -25,10 +25,13 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+    - name: Build debug app
+      run: ./gradlew assembleDebug
+
     - name: Upload artifacts
       uses: actions/download-artifact@v3.0.1
       with:
         name: pokedexdit
         path: |
-          app/**/apk/release/*
-          app/**/mapping/release/mapping.txt
+          app/**/apk/debug/*
+          app/**/mapping/debug/mapping.txt
