@@ -24,3 +24,11 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Upload artifacts
+      uses: actions/download-artifact@v3.0.1
+      with:
+        name: pokedexdit
+        path: |
+          app/**/apk/release/*
+          app/**/mapping/release/mapping.txt
