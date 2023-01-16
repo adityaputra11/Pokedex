@@ -31,5 +31,5 @@ jobs:
     - name: Upload artifacts
       uses: actions/download-artifact@v3.0.1
       with:
-        name: pokedexdit
-        path: ./app/build/outputs/apk/debug/app-debug.apk
+          name: apk
+          path: app/build/outputs/apk/debug/app-debug.apk 
